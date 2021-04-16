@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Todo } from 'src/app/models/todo';
 
 @Component({
   selector: 'app-read-all',
@@ -7,6 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReadAllComponent implements OnInit {
 
+  list: Todo[] = [
+    {
+      titulo: "teste",
+      dataParaFinalizar: new Date,
+      finalizado: false
+    },
+    {
+      titulo: "teste 2",
+      dataParaFinalizar: new Date,
+      finalizado: false
+    }
+  ]
+  
   constructor() { }
 
   ngOnInit() {
