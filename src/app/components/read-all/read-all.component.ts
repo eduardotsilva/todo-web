@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { VirtualTimeScheduler } from "rxjs";
 import { Todo } from "src/app/models/todo";
 import { TodoService } from "src/app/services/todo.service";
@@ -14,7 +15,7 @@ export class ReadAllComponent implements OnInit {
 
   closed = 0;
 
-  constructor(private service: TodoService) {}
+  constructor(private service: TodoService, private router: Router) {}
 
   ngOnInit() {
     this.findAll();
@@ -42,5 +43,9 @@ export class ReadAllComponent implements OnInit {
       } else {
       }
     });
+  }
+
+  navegarParaFinalizados(): void {
+    this.router.navigate(["finalizados"]);
   }
 }
