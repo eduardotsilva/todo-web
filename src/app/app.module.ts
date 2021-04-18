@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-
+import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./components/header/header.component";
@@ -14,7 +14,11 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
-import { FinalizadosComponent } from './components/finalizados/finalizados.component';
+import { FinalizadosComponent } from "./components/finalizados/finalizados.component";
+import { CreateComponent } from "./components/create/create.component";
+import { MatInputModule } from "@angular/material/input";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -23,10 +27,12 @@ import { FinalizadosComponent } from './components/finalizados/finalizados.compo
     FooterComponent,
     ReadAllComponent,
     FinalizadosComponent,
+    CreateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatCardModule,
@@ -35,6 +41,9 @@ import { FinalizadosComponent } from './components/finalizados/finalizados.compo
     HttpClientModule,
     MatBadgeModule,
     MatSnackBarModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
