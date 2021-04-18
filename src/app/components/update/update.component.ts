@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Todo } from "src/app/models/todo";
 import { TodoService } from "src/app/services/todo.service";
 
@@ -16,19 +16,31 @@ export class UpdateComponent implements OnInit {
     finalizado: false,
   };
 
-  constructor(private router: Router, private service: TodoService) {}
+  constructor(
+    private router: Router,
+    private service: TodoService,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.todo.id = this.route.snapshot.paramMap.get("id");
+    this.findById();
+  }
 
-  create(): void {
-    this.formataData();
-    this.service.create(this.todo).subscribe(
+  findById(): void {
+    this.service.findById(this.todo.id).subscribe((resposta) => {
+      this.todo = resposta;
+    });
+  }
+
+  update(): void {
+    this.service.update(this.todo).subscribe(
       (resposta) => {
-        this.service.message("To-do criado com sucesso!");
+        this.service.message("Informações atualizadas com sucesso!");
         this.router.navigate([""]);
       },
       (erro) => {
-        this.service.message("Falha ao criar To-do");
+        this.service.message("Falha ao atualizar To-do");
         this.router.navigate([""]);
       }
     );
